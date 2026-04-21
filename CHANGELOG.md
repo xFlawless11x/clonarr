@@ -1,5 +1,12 @@
 # Changelog
 
+## v2.1.0
+
+### Changed
+
+- **Architecture refactor** — backend restructured from flat `ui/*.go` to standard Go layout: `internal/api/` (HTTP handlers split by domain — instances, cleanup, sync, autosync, trash, custom_cfs, custom_profiles, import, scoring, notifications, config, auth_handlers, routes, server, utils), `internal/core/` (models, config store, sync engine, TRaSH integration), `internal/arr/` (Radarr/Sonarr API clients), `internal/auth/` + `internal/netsec/` (security primitives unchanged), `internal/utils/` (`SafeGo`). `ui/` is now only the `//go:embed static` wrapper. Contributed by @ColeSpringer via revived PR #14. No user-facing behavior change — pure reorganization for maintainability.
+- **Background panic recovery everywhere** — every goroutine wrapped via `utils.SafeGo`. One bad notifier/poller can no longer crash the whole process.
+
 ## v2.0.8
 
 ### Added
