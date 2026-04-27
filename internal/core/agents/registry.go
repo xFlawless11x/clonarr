@@ -98,6 +98,7 @@ func maskConfigFallback(cfg Config) Config {
 	cfg.GotifyToken = maskSecret(cfg.GotifyToken, maskedToken)
 	cfg.PushoverUserKey = maskSecret(cfg.PushoverUserKey, maskedToken)
 	cfg.PushoverAppToken = maskSecret(cfg.PushoverAppToken, maskedToken)
+	cfg.NtfyToken = maskSecret(cfg.NtfyToken, maskedToken)
 	return cfg
 }
 
@@ -107,6 +108,7 @@ func preserveConfigFallback(incoming, existing Config) Config {
 	incoming.GotifyToken = preserveIfMasked(strings.TrimSpace(incoming.GotifyToken), existing.GotifyToken, maskedToken)
 	incoming.PushoverUserKey = preserveIfMasked(strings.TrimSpace(incoming.PushoverUserKey), existing.PushoverUserKey, maskedToken)
 	incoming.PushoverAppToken = preserveIfMasked(strings.TrimSpace(incoming.PushoverAppToken), existing.PushoverAppToken, maskedToken)
+	incoming.NtfyToken = preserveIfMasked(strings.TrimSpace(incoming.NtfyToken), existing.NtfyToken, maskedToken)
 	return incoming
 }
 

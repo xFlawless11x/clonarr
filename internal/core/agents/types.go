@@ -56,6 +56,11 @@ type Config struct {
 	// Pushover — third-party push notification service.
 	PushoverUserKey  string `json:"pushoverUserKey,omitempty"`  // user/group key from Pushover dashboard
 	PushoverAppToken string `json:"pushoverAppToken,omitempty"` // application API token from Pushover dashboard
+
+	// Ntfy — self-hosted or public push notification service (https://ntfy.sh).
+	// NtfyToken is optional; omit for unauthenticated self-hosted servers.
+	NtfyTopicURL string `json:"ntfyTopicUrl,omitempty"` // full URL including topic path (e.g. https://ntfy.sh/my-alerts)
+	NtfyToken    string `json:"ntfyToken,omitempty"`    // Bearer token for authenticated servers
 }
 
 // TestResult captures the outcome of one provider-specific test channel.
